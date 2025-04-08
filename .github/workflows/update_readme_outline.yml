@@ -1,0 +1,48 @@
+name: Update README Outline
+
+on:
+  push:
+    branches:
+      - main  # Or your default branch (e.g., master)
+    paths:
+      - '[0-9]*-*.md'        # Trigger on changes to numbered markdown files
+      - 'generate_outline.py' # Also trigger if the generator script changes
+
+permissions:
+  contents: write # Allow the action to write to the repository (commit changes)
+
+jobs:
+  update_readme:
+    runs-on: ubuntu-latest # Use the latest Ubuntu runner
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4 # Checks out your repository code
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x' # Use Python 3
+
+      - name: Run script to generate outline
+        run: python3 generate_outline.py
+
+      - name: Check for changes
+        id: check_changes
+        run: |
+          # Check if README.md was modified by the script
+          git diff --quiet README.md || echo "changed=true" >> $GITHUB_ENV
+
+      - name: Configure Git
+        if: env.changed == 'true' # Only run if README.md changed
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+
+      - name: Commit and push changes
+        if: env.changed == 'true' # Only run if README.md changed
+        run: |
+          git add README.md
+          git commit -m "docs: Update README outline [skip ci]"
+          git push
+        # Note: '[skip ci]' in the commit message prevents this commit
+        # from triggering the workflow again, avoiding infinite loops.

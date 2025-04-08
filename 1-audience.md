@@ -1,4 +1,4 @@
-# Target Audience (testing)
+# Target Audience
 
 ## Who this is for?
 - With tech skills, but never freelanced

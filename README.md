@@ -17,6 +17,6 @@ We welcome contributions from the community! Here's how you can contribute:
 <!-- OUTLINE:START -->
 1. Target Audience
 2. Defining Services
-3. Your First Client
+3. Getting Your First Client
 4. What's Next?
 <!-- OUTLINE:END -->

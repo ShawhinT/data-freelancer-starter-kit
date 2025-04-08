@@ -1,4 +1,4 @@
-# Your First Client
+# Getting Your First Client
 
 ## Ancedotes
 - How did you get your first client?

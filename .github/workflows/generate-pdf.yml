@@ -1,0 +1,47 @@
+name: Generate PDF
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Pandoc and LaTeX
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y pandoc texlive-latex-base texlive-fonts-recommended texlive-extra-utils texlive-latex-extra
+
+      - name: Generate PDF
+        run: |
+          # Create a temporary file to store all markdown content
+          echo "" > combined.md
+          
+          # Append each numbered markdown file in order
+          for i in {1..5}; do
+            if [ -f "${i}-"*.md ]; then
+              echo "Adding ${i}-"*.md
+              cat "${i}-"*.md >> combined.md
+              echo -e "\n\n" >> combined.md
+            fi
+          done
+          
+          # Convert to PDF
+          pandoc combined.md \
+            -o guide.pdf \
+            --pdf-engine=xelatex \
+            -V geometry:margin=1in \
+            -V mainfont="DejaVu Sans" \
+            -V monofont="DejaVu Sans Mono"
+
+      - name: Upload PDF
+        uses: actions/upload-artifact@v4
+        with:
+          name: guide
+          path: guide.pdf
+          retention-days: 90 

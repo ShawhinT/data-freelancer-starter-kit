@@ -1,6 +1,10 @@
 # The Ultimate Data Freelancer Starter Kit
 An open-source guide on how to launch your technical freelance journey from [The Data Entrepreneurs](https://thedataentrepreneurs.com/) community.
 
+NOTE: This is **actively under development**. The latest version is linked below.
+
+[GUIDE PDF](https://github.com/ShawhinT/data-freelancer-starter-kit/blob/main/guide.pdf)
+
 ## How to Contribute
 
 We welcome contributions from the community! Here's how you can contribute:

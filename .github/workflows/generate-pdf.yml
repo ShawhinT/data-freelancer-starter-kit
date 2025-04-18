@@ -43,10 +43,15 @@ jobs:
         run: |
           git config --global user.name  'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-
-          # Pull latest (just in case)
-          git pull --rebase --quiet
-
+      
+          # 1 – stage the newly‑generated / updated file
           git add guide.pdf
-          git commit -m "Update PDF guide [skip ci]" || echo "No changes"
+      
+          # 2 – bring main up‑to‑date and replay our staged changes if needed
+          git pull --rebase --autostash --quiet
+      
+          # 3 – record a commit only when the PDF actually changed
+          git commit -m "Update PDF guide [skip ci]" || echo "Nothing new"
+      
           git push --quiet
+

@@ -5,12 +5,9 @@ An open-source guide on how to launch your technical freelance journey from [The
 
 We welcome contributions from the community! Here's how you can contribute:
 
-1.  **Fork this repo**
-2.  **Create a branch**
-3.  **Make your changes**
-4.  **Commit your changes**
-5.  **Push to your fork**
-6.  **Submit a Pull Request**
+1.  **Clone repo**
+2.  **Make your changes**
+3.  **Submit a Pull Request**
 
 ## Outline
 

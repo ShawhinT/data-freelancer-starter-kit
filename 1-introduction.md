@@ -1,4 +1,4 @@
-# Introduction
+# The Ultime Data Freelancer Starter Kit
 
 Technical professionals in the data/AI space (e.g. data scientists, ML engineers, data analysts) possess high-value skillsets. This is clear by the 6-figure salaries that come with these job titles.
 

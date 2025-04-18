@@ -7,6 +7,8 @@
 
 Notes from meeting:
 - Ask yourself: What have I done before?
+    * People like to think that they need a very specialized set of skills in AI and data. This perspective is wrong. Actually, you will notice that most skills you have are actually relevant to what you can do in terms of AI and data. Most business skills are easy to implement in data fields. For example, a project manager of any kind will have the necessary know-how to design, implement and maintain complex systems, even if the project was outside the scope of data/AI fields. 
+
 - Picking a AI/data sub-domain (e.g. ML, LLMs, agents, data infra, data dashboard)
     * Setting all emotional approaches aside, there are two main ways you can make progress. I don't prefer one over another, it's just two different ways of doing business. They are:
         1) Pick a field in the industry which the companies need to maintain their systems and business. For example, companies will always need to maintain their data infra, making data engineering a solid field. Likewise, the companies will always want a comprehensive understanding of their data, making dashboarding & BI visualization another solid field. 
@@ -20,3 +22,6 @@ Notes from meeting:
         3) A platform (like a blog, YouTube channel etc.) where you share authentic details about your work. This basically ensures people that you know what you are talking about. 
 
 - How do I sell? (wrapping paper, how you pitch, client communication)
+    * It is almost always better to follow a problem-first approach. There are two ways you can attain this:
+        a. Talk to potential clients. Understand their work. Ask them about their problems.
+        b. Act on a problem you noticed yourself and validate your ideas with a demo (or asking around)

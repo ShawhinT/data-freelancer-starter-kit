@@ -2,8 +2,7 @@ name: Generate PDF
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -15,26 +14,24 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install Pandoc and LaTeX
+      - name: Install Pandoc + TeX Live
         run: |
-          sudo apt-get update
-          sudo apt-get install -y pandoc texlive-latex-base texlive-fonts-recommended texlive-extra-utils texlive-latex-extra texlive-xetex
+          sudo apt-get update -y
+          sudo apt-get install -y pandoc texlive-latex-base texlive-fonts-recommended \
+                                   texlive-extra-utils texlive-latex-extra texlive-xetex
 
-      - name: Generate PDF
+      - name: Build guide.pdf
         run: |
-          # Create a temporary file to store all markdown content
-          echo "" > combined.md
-          
-          # Append each numbered markdown file in order
+          : > combined.md   # truncate/create
           for i in {1..5}; do
-            if [ -f "${i}-"*.md ]; then
-              echo "Adding ${i}-"*.md
-              cat "${i}-"*.md >> combined.md
-              echo -e "\n\n" >> combined.md
-            fi
+            for md in ${i}-*.md; do
+              [ -e "$md" ] || continue
+              echo "Adding $md"
+              cat "$md" >> combined.md
+              printf "\n\n" >> combined.md
+            done
           done
-          
-          # Convert to PDF
+
           pandoc combined.md \
             -o guide.pdf \
             --pdf-engine=xelatex \
@@ -42,11 +39,14 @@ jobs:
             -V mainfont="DejaVu Sans" \
             -V monofont="DejaVu Sans Mono"
 
-      - name: Commit and push PDF
+      - name: Commit & push PDF
         run: |
-          git config --global user.name 'github-actions[bot]'
+          git config --global user.name  'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git pull --rebase origin main
+
+          # Pull latest (just in case)
+          git pull --rebase --quiet
+
           git add guide.pdf
-          git commit -m "Update PDF guide [skip ci]" || echo "No changes to commit"
-          git push 
+          git commit -m "Update PDF guide [skip ci]" || echo "No changes"
+          git push --quiet

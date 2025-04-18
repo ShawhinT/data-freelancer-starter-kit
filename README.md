@@ -3,7 +3,7 @@ An open-source guide on how to launch your technical freelance journey from [The
 
 NOTE: This is **actively under development**. The latest version is linked below.
 
-[GUIDE PDF](https://github.com/ShawhinT/data-freelancer-starter-kit/blob/main/guide.pdf)
+[Guide PDF](https://github.com/ShawhinT/data-freelancer-starter-kit/blob/main/guide.pdf)
 
 ## How to Contribute
 

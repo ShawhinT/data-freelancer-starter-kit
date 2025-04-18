@@ -12,7 +12,7 @@ We welcome contributions from the community! Here's how you can contribute:
 ## Outline
 
 <!-- OUTLINE:START -->
-1. Introduction
+1. The Ultime Data Freelancer Starter Kit
 2. Target Audience
 3. Defining Services
 4. Getting Your First Client
